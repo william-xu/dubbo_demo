@@ -23,10 +23,12 @@ import com.example.dubbo.demo.DemoService;
 public class DubboD2Consumer {
 
     public static void main(String[] args) {
-        //Prevent to get IPV6 address,this way only work in debug mode
-        //But you can pass use -Djava.net.preferIPv4Stack=true,then it work well whether in debug mode or not
+        // Prevent to get IPV6 address,this way only work in debug mode
+        // But you can pass use -Djava.net.preferIPv4Stack=true,then it work well
+        // whether in debug mode or not
         System.setProperty("java.net.preferIPv4Stack", "true");
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"spring/dubbo-consumer.xml"});
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                new String[] { "spring/dubbo-consumer.xml" });
         context.start();
         DemoService demoService = (DemoService) context.getBean("demoService"); // get remote service proxy
 
